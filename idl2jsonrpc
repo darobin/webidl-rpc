@@ -1,0 +1,29 @@
+#!/usr/local/bin/node
+
+/*
+ * idl2jsonrpc: convert a WebIDL schema to both client and server code implementing it as JSON-RPC
+ *
+ * This code steals heavily from https://github.com/andreasgal/dom.js. The bugs are mine, though.
+ * 
+ * Takes a WebIDL file and a directory name, parses the former and writes the client and server code
+ * out in the latter (no checks are made to avoid overwriting).
+ *
+ * The client code assumes that jQuery is available, because I'm lazy. The server code is built using
+ * Express.
+ *
+ * This script requires a WebIDL parser from https://github.com/darobin/webidl.js and assumes that 
+ * you've cloned it into the top-level directory of this repo:
+ *
+ *   git clone git@github.com:darobin/webidl.js.git
+ *
+ */
+var widl = process.argv[2],
+    outDir = process.argv[3];
+
+
+
+
+
+
+
+

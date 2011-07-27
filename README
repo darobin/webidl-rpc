@@ -1,0 +1,2 @@
+This is an experimental implementation of the idea that WebIDL can be used to generate
+a JSON-RPC interface.
