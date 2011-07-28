@@ -8,9 +8,6 @@
  * Takes a WebIDL file and a directory name, parses the former and writes the client and server code
  * out in the latter (no checks are made to avoid overwriting).
  *
- * The client code assumes that jQuery is available, because I'm lazy. The server code is built using
- * Express.
- *
  * This script requires a WebIDL parser from https://github.com/darobin/webidl.js and assumes that 
  * you've cloned it into the top-level directory of this repo:
  *
@@ -18,11 +15,26 @@
  *
  */
 var widl = process.argv[2],
-    outDir = process.argv[3];
+    outDir = process.argv[3],
+    fs = require("fs");
+
+if (!widl || !outDir) {
+    console.error("Usage: idl2jsonrpc webidl outputDir");
+    process.exit(1);
+}
+var cnt = fs.readFileSync(webidl, "utf-8"),
+    parser = require("../webidl.js/node/WebIDLParser.js"),
+    idl = parser.Parser.parse(cnt);
 
 
-
-
+// WHAT WE DO:
+//  SERVER:
+//      - for each method of each interface create stub code to handle the content
+//      - auto-handle: id, non-existent methods, JSON parse/serialise, errors
+//  CLIENT:
+//      - for each method of each interface, expose it (not as in the IDL) so that the server can be reached correctly
+//      - handle callbacks properly
+//      - skip methods that don't return void?
 
 
 
